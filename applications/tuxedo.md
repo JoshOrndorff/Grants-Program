@@ -176,10 +176,4 @@ The UTXO model allows concurrent processing of unrelated transactions (those tha
 
 ## Additional Information :heavy_plus_sign:
 
-**How did you hear about the Grants Program?** Web3 Foundation Website / Medium / Twitter / Element / Announcement by another team / personal recommendation / etc.
-
-Here you can also add any additional information that you think is relevant to this application but isn't part of it already, such as:
-
-- Work you have already done.
-- If there are any other teams who have already contributed (financially) to the project.
-- Previous grants you may have applied for.
+The team has been in the Substrate ecosystem for a long time, so we have heard of the grants program in many ways. From colleagues, grant recipients speaking highly the program, and grant recipients looking for help understanding Substrate.
