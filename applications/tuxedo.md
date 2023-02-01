@@ -72,16 +72,11 @@ This grant does not strive to create the entire rich ecosystem of Tuxedo pieces 
 
 ### Ecosystem Fit
 
-TODO!!!!!!!!!!!!!!!!!!
+Tuxedo is a framework for writing Substrate runtimes. Substrate is the toolkit for building virtually all parachain nodes as well as many standalone blockchains. As such, Tuxedo provides a richer set of options to runtime developers, and hopes to attract teams to the substrate / Polkadot ecosystem who may have gone elsewhere.
 
-Help us locate your project in the Polkadot/Substrate/Kusama landscape and what problems it tries to solve by answering each of these questions:
+The primary users of Tuxedo will be parachain and runtime developers who will use Tuxedo directly to structure their runtimes. Of course, the user base will trickle downstream as well to users of those parachains that choose to build with Tuxedo. However, chain users will use Tuxedo only indirectly.
 
-- Where and how does your project fit into the ecosystem?
-- Who is your target audience (parachain/dapp/wallet/UI developers, designers, your own user base, some dapp's userbase, yourself)?
-- What need(s) does your project meet?
-- Are there any other projects similar to yours in the Substrate / Polkadot / Kusama ecosystem?
-  - If so, how is your project different?
-  - If not, are there similar projects in related ecosystems?
+There are no projects like this in the Substrate ecosystem, although they do exist in the broader blockchain space; Cardano being the most notable example.
 
 ## Team :busts_in_silhouette:
 
