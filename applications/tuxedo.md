@@ -168,10 +168,11 @@ Create the third Tuxedo piece, the ability to charge transaction fees
 
 ## Future Plans
 
-Please include here
+Being a framework for runtime development, we plan to continue developing the ecosystem of Tuxedo Pieces including things Pieces for NFTs, Governance Mechanisms, and even smart contracts.
 
-- how you intend to use, enhance, promote and support your project in the short term, and
-- the team's long-term plans and intentions in relation to it.
+Joshy has long had a vision of a UTXO based smart contract language based on the pi calculus. With Tuxedo core complete, it will be possible to develop such a contracting platform.
+
+The UTXO model allows concurrent processing of unrelated transactions (those that do not compete for any inputs). IT would be exciting to extend Substrate itself to support a DAG structure rather than a linear chain to take advantage of this ability, although the feasibility of this extension has not yet been studied.
 
 ## Referral Program (optional) :moneybag: 
 
