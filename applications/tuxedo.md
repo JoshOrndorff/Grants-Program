@@ -107,51 +107,64 @@ As teaching staff at the Polkadot Blockchain Academy in Buenos Aires, Joshy and 
 
 ## Development Roadmap :nut_and_bolt:
 
-TODO... Lots more TODO. This is long.
-
-This section should break the development roadmap down into milestones and deliverables. To assist you in defining it, we have created a document with examples for some grant categories [here](../docs/Support%20Docs/grant_guidelines_per_category.md). Since these will be part of the agreement, it helps to describe _the functionality we should expect in as much detail as possible_, plus how we can verify and test that functionality. Whenever milestones are delivered, we refer to this document to ensure that everything has been delivered as expected.
-
-Below we provide an **example roadmap**. In the descriptions, it should be clear how your project is related to Substrate, Kusama or Polkadot. We _recommend_ that teams structure their roadmap as 1 milestone ≈ 1 month.
-
-> :exclamation: If any of your deliverables is based on somebody else's work, make sure you work and publish _under the terms of the license_ of the respective project and that you **highlight this fact in your milestone documentation** and in the source code if applicable! **Teams that submit others' work without attributing it will be immediately terminated.**
-
 ### Overview
 
-- **Total Estimated Duration:** Duration of the whole project (e.g. 2 months)
-- **Full-Time Equivalent (FTE):**  Average number of full-time employees working on the project throughout its duration (see [Wikipedia](https://en.wikipedia.org/wiki/Full-time_equivalent), e.g. 2 FTE)
-- **Total Costs:** Requested amount in USD for the whole project (e.g. 12,000 USD). Note that the acceptance criteria and additional benefits vary depending on the [level](../README.md#level_slider-levels) of funding requested. This and the costs for each milestone need to be provided in USD; if the grant is paid out in Bitcoin, the amount will be calculated according to the exchange rate at the time of payment.
+- **Total Estimated Duration:** 3 months
+- **Full-Time Equivalent (FTE):**  1 FTE (Joshy and Andrew will both work roughly half time on this)
+- **Total Costs:** $30,000 (USD)
 
-### Milestone 1 Example — Basic functionality
+### Milestone 1 — Tuxedo Core and Cryptocurrency Piece
 
 - **Estimated duration:** 1 month
-- **FTE:**  1,5
-- **Costs:** 8,000 USD
+- **FTE:**  1
+- **Costs:** 10,000 USD
 
-> :exclamation: **The default deliverables 0a-0d below are mandatory for all milestones**, and deliverable 0e at least for the last one. 
+Split the existing FRAMEless UTXO project into the generic Tuxedo core, and the first Tuxedo piece which represents a cryptocurrency.
 
 | Number | Deliverable | Specification |
 | -----: | ----------- | ------------- |
 | **0a.** | License | Apache 2.0 / GPLv3 / MIT / Unlicense |
-| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can (for example) spin up one of our Substrate nodes and send test transactions, which will show how the new functionality works. |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can spin up the example node and transfer tokens |
 | **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
-| **0d.** | Docker | We will provide a Dockerfile(s) that can be used to test all the functionality delivered with this milestone. |
-| 0e. | Article | We will publish an **article**/workshop that explains [...] (what was done/achieved as part of the grant). (Content, language and medium should reflect your target audience described above.) |
-| 1. | Substrate module: X | We will create a Substrate module that will... (Please list the functionality that will be implemented for the first milestone. You can refer to details provided in previous sections.) |
-| 2. | Substrate module: Y | The Y Substrate module will... |
-| 3. | Substrate module: Z | The Z Substrate module will... |
-| 4. | Substrate chain | Modules X, Y & Z of our custom chain will interact in such a way... (Please describe the deliverable here as detailed as possible) |
-| 5. | Library: ABC | We will deliver a JS library that will implement the functionality described under "ABC Library" |
-| 6. | Smart contracts: ... | We will deliver a set of ink! smart contracts that will...
+| **0d.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
+| 1. | Tuxedo Core | We will create the core of the Tuxedo System, analogous to FRAME Executive and FRAME System |
+| 2. | Token Piece | We will create the first Tuxedo piece that serves as a cryptocurrency, analogous to Pallet Balances |
+| 3. | Tuxedo Node Template | We will create a Substrate node with the runtime built with Tuxedo and including the Token piece. Together this will represent a bitcoin-like token (not PoW though, only the token logic is bitcoin-like) |
 
-
-### Milestone 2 Example — Additional features
+### Milestone 2 — Wallet, Multisig, and Full Tutorial
 
 - **Estimated Duration:** 1 month
-- **FTE:**  1,5
-- **Costs:** 8,000 USD
+- **FTE:**  1
+- **Costs:** 10,000 USD
 
-...
+Create the second Tuxedo piece, a user-facing wallet, and even better documentation
 
+| Number | Deliverable | Specification |
+| -----: | ----------- | ------------- |
+| **0a.** | License | Apache 2.0 / GPLv3 / MIT / Unlicense |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can spin up the example node and transfer tokens |
+| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
+| **0d.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
+| 1. | User Wallet | We will create a CLI wallet that users can use to track their tokens in a Tuxedo-based cryptocurrency. This makes the example node actually useable by common users who are curious to explore but not yet ready to dig into the code. |
+| 2. | Multisig Piece | We will expand the ecosystem of Tuxedo pieces by creating a multisig wallet. In addition to making the Tuxedo ecosystem a bit more complete, this also demonstrates to future piece developers how to couple pieces. |
+| **0e.** | Full written and Video Tutorial | With a user-facing wallet now complete, we can get serious about user-facing documentation. We will create a full written tutorial and video walkthough that covers how to build and run the Tuxedo Node Template, and send tokens around with the wallet. We will then dive into how to add the multisig piece to your runtime, and how to develop your own (very simple) piece analogous to the FRAME module template. |
+
+### Milestone 3 — Economic Security
+
+- **Estimated Duration:** 1 month
+- **FTE:**  1
+- **Costs:** 10,000 USD
+
+Create the third Tuxedo piece, the ability to charge transaction fees
+
+| Number | Deliverable | Specification |
+| -----: | ----------- | ------------- |
+| **0a.** | License | Apache 2.0 / GPLv3 / MIT / Unlicense |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can spin up the example node and transfer tokens |
+| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
+| **0d.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
+| **0e.** | Article | We will publish an **article** that explains the UTXO model and how Tuxedo brings it to the Substrate ecosystem. The article will also link to the tutorial from milestone 2 and encourage developers to begin exploring |
+| 1. | Transaction Fee Piece | We will create the final Tuxedo Piece included with this grant which allows fee accounting to make an economically secure chain. |
 
 ## Future Plans
 
