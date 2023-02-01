@@ -20,10 +20,6 @@ Tuxedo would make the UTXO model more visible and accessible in the Substrate ec
 
 The primary advantage of UTXOs is that they are highly parallelizable. This fits well in Polkadot's multichain ecosystem where parachains execute and communicate asynchronously, and will be an even bigger advantage if (hopefully when) DAG based chains become popular, a trend that is already kicked off with projects like Aleph Zero, and many others outside the Polkadot ecosystem, including Hedera Hashgraph, Nano, and Casper Labs.
 
-The team has done previous work on this topic.
-* Joshy [maintained](https://github.com/JoshOrndorff/utxo-workshop/tree/joshy-update-deps-may-2022) the Substrate UTXO Workshop code as part of the Substrate Developer Hub team, and has continued to maintain it out of personal interest even years after leaving that team.
-* Andrew [ported](https://github.com/coax1d/utxo-frameless/) this code to work _without FRAME_ as part of the Polkadot Blockchain Academy.
-
 The UTXO data model is relatively well established by Bitcoin as well as research from IOHK their [Abstract Model](https://eprint.iacr.org/2018/469.pdf)  and [Extended UTXO Model](https://files.zotero.net/eyJleHBpcmVzIjoxNjc1MjAwMTAwLCJoYXNoIjoiYTVhYmY4NjdiY2E2YzdkNTNjODkwNWNmZDZhYmM5MjAiLCJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uXC9wZGYiLCJjaGFyc2V0IjoiIiwiZmlsZW5hbWUiOiJDaGFrcmF2YXJ0eSBldCBhbC4gLSAyMDIwIC0gVGhlIEV4dGVuZGVkIFVUWE8gTW9kZWwucGRmIn0%3D/ddc74b205ca4890fe1d87770bee15dd5a82bfed1ad8f84217cbf407686958498/Chakravarty%20et%20al.%20-%202020%20-%20The%20Extended%20UTXO%20Model.pdf). Our primary tasks would be to implement this in Rust and expose a standard API for chain developers to build on. This is analogous to the API exposed by FRAME System and the Pallets built on top.
 
 Our core data types follow similarly, to the IOHK research cited above. The primary differences are that we do not assume a native cryptocurrency and rely on Tuxedo **Pieces** (analogous to FRAME Pallets) to provide the validation logic, rather than the UTXOs themselves.
@@ -90,8 +86,6 @@ There are no projects like this in the Substrate ecosystem, although they do exi
 - **Contact Name:** Joshy Orndorff
 - **Contact Email:** joshyorndorff at proton dot me
 
-
-
 ### Team's experience
 
 Joshy entered the Substrate ecosystem in 2019 as part of the Substrate Developer Hub team. There he created and hosted the weekly Substrate Seminar, and contributed significantly to the Substrate Recipes. In 2020, he moved to the Moonbeam team where he was a core developer. While at Moonbeam, Joshy wrote the [Nimbus consensus engine](https://github.com/PureStake/nimbus/) which is used in several production parachains, and helped pioneer the technique whereby EVM contracts can interact with native Substrate pallets. In 2022, Joshy began contributing to the Polkadot Blockchain Academy, teaching in both Cambridge and Buenos Aires.
@@ -103,15 +97,13 @@ Joshy and Andrew met in Cambridge in 2022 at the first Polkadot Blockchain Acade
 
 ## Development Status :open_book:
 
-TODO
+The team has done previous work on this topic:
+* Joshy [maintained](https://github.com/JoshOrndorff/utxo-workshop/tree/joshy-update-deps-may-2022) the Substrate UTXO Workshop code as part of the Substrate Developer Hub team, and has continued to maintain it out of personal interest even years after leaving that team.
+* Andrew [ported](https://github.com/coax1d/utxo-frameless/) this code to work _without FRAME_ as part of the Polkadot Blockchain Academy.
 
-If you've already started implementing your project or it is part of a larger repository, please provide a link and a description of the code here. In any case, please provide some documentation on the research and other work you have conducted before applying. This could be:
+The development so far has focused specifically on the crypto_currency_ use case, whereas this grant proposes to generalize the code to be a framework for broader runtime logic development.
 
-- links to improvement proposals or [RFPs](https://github.com/w3f/Grants-Program/tree/master/docs/RFPs) (requests for proposal),
-- academic publications relevant to the problem,
-- links to your research diary, blog posts, articles, forum discussions or open GitHub issues,
-- references to conversations you might have had related to this project with anyone from the Web3 Foundation,
-- previous interface iterations, such as mock-ups and wireframes.
+As teaching staff at the Polkadot Blockchain Academy in Buenos Aires, Joshy and Andrew found themselves ion two occasions in conversations with other teaching staff including Kian Paimani in which we suspected that a diversity of runtime development frameworks would make the Substrate ecosystem stronger and attractive to a broader development base.
 
 ## Development Roadmap :nut_and_bolt:
 
