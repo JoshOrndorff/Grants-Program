@@ -14,7 +14,7 @@ Currently it is only possible to build a Tuxedo runtime for a standalone substra
 
 ### Project Details
 
-The primary advantage of UTXOs is that they are highly parallelizable. This fits well in Polkadot's multichain ecosystem where parachains execute and communicate asynchronously, and will be an even bigger advantage if (hopefully when) DAG based chains become popular, a trend that is already kicked off with projects like Aleph Zero, and many others outside the Polkadot ecosystem, including Hedera Hashgraph, Nano, and Casper Labs.
+We would like to extend the Tuxedo to become a parachain for a few key reasons. One is for Tuxedo runtimes to beable to take advantage of the shared security model of polkadot. This is also allows us to see out a greater vision we have for a Tuxedo runtime to act as an Atomic Swap hub for all DOT ecosystem currencies. Currently Cryp is responsible for delivering a Monero BTC atomic swap protocol [Farcaster](https://github.com/farcaster-project)  
 
 The UTXO data model is relatively well established by Bitcoin as well as research from IOHK in their [Abstract Model](https://eprint.iacr.org/2018/469.pdf)  and [Extended UTXO Model](https://files.zotero.net/eyJleHBpcmVzIjoxNjc1MjAwMTAwLCJoYXNoIjoiYTVhYmY4NjdiY2E2YzdkNTNjODkwNWNmZDZhYmM5MjAiLCJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uXC9wZGYiLCJjaGFyc2V0IjoiIiwiZmlsZW5hbWUiOiJDaGFrcmF2YXJ0eSBldCBhbC4gLSAyMDIwIC0gVGhlIEV4dGVuZGVkIFVUWE8gTW9kZWwucGRmIn0%3D/ddc74b205ca4890fe1d87770bee15dd5a82bfed1ad8f84217cbf407686958498/Chakravarty%20et%20al.%20-%202020%20-%20The%20Extended%20UTXO%20Model.pdf). Our primary tasks would be to implement this in Rust and expose a standard API for chain developers to build on. This is analogous to the API exposed by FRAME System and the Pallets built on top.
 
@@ -61,9 +61,6 @@ trait TuxedoPiece {
   fn validate(transaction: Transaction, input: Input) -> bool;
 }
 ```
-
-This grant does not strive to create the entire rich ecosystem of Tuxedo pieces that we hope to eventually be developed on top of Tuxedo. Rather it strives to create the core of the Tuxedo system and a few of the most important and exemplary pieces. Specifically, we strive to develop the analogs to FRAME Executive, FRAME System, Pallet Balances, and Pallet Transaction Payment.
-
 ### Ecosystem Fit
 
 Tuxedo is a framework for writing Substrate runtimes. Substrate is the toolkit for building virtually all parachain nodes as well as many standalone blockchains. As such, Tuxedo provides a richer set of options to runtime developers, and hopes to attract teams to the Substrate / Polkadot ecosystem who may have otherwise gone elsewhere.
@@ -80,11 +77,13 @@ While it fulfills a similar role, Tuxedo is not intended to compete with FRAME, 
 
 - Joshy Orndorff https://github.com/JoshOrndorff
 - Andrew Burger https://github.com/coax1d
+- Robert Hambrock https://github.com/Lederstrumpf
 
 ### Contact
 
-- **Contact Name:** Joshy Orndorff
-- **Contact Email:** joshyorndorff at proton dot me
+## TODO who is the contact?
+- **Contact Name:** Joshy Orndorff 
+- **Contact Email:** joshyorndorff at proton dot me at proton dot me
 - **Registered Address:** The address you'll use in the invoices
 
 ### Team's experience
@@ -94,26 +93,26 @@ Joshy entered the Substrate ecosystem in 2019 as part of the Substrate Developer
 Andrew entered the Substrate ecosystem from a curiosity point of view back in June 2021. From there he learned blockchain and Substrate via documents and tinkering in his off time after work. In December 2021 received a fulltime job for a venture builder to build a parachain to eventually connect to Polkadot. Andrew graduated from the first Polkadot Blockchain Academy cohort in 2022 in Cambridge. After Cambridge Andrew moved on from the venture builder to dive into education in the Polkadot Ecosystem by instructing and developing course curriculum for the Polkadot Devcamp #2 online. For Andrew's current work he is contracting as an instructor at the Polkadot Blockchain Academy for Parity Technologies lecturing and creating educational content for Blockchain Fundamentals(Specifically lecturing on UTXO vs Accounts models), Substrate, and XCM modules. Also Andrew is doing Rust Core development work for the Integritee Parachain. Andrew shares a passion for allowing blockchain developers the ability to build upon the UTXO model in Substrate. 
 
 
+## TODO Robert put his experience blurb here
+
 Joshy and Andrew met in Cambridge in 2022 at the first Polkadot Blockchain Academy. There Andrew chose the Frameless UTXO Project cited above as his final project.
 
 
 ## Development Status :open_book:
 
 The team has done previous work on this topic:
-* Joshy [maintained](https://github.com/JoshOrndorff/utxo-workshop/tree/joshy-update-deps-may-2022) the Substrate UTXO Workshop code as part of the Substrate Developer Hub team, and has continued to maintain it out of personal interest even years after leaving that team.
-* Andrew [ported](https://github.com/coax1d/utxo-frameless/) this code to work _without FRAME_ as part of the Polkadot Blockchain Academy.
+[tuxedo](https://github.com/Off-Narrative-Labs/Tuxedo/tree/main)
 
-The development so far has focused specifically on the crypto_currency_ use case, whereas this grant proposes to generalize the code to be a framework for broader runtime logic development.
-
-As teaching staff at the Polkadot Blockchain Academy in Buenos Aires, Joshy and Andrew found themselves, on two occasions, in conversations with other teaching staff in which it was noted that a diversity of runtime development frameworks would make the Substrate ecosystem stronger and attractive to a broader development base. This idea was supported by Kian Paimani and Shawn Tabrizi among others.
+Some lingering leftovers on Tuxedo is mostly centered around the wallet. We do at some point want to make the wallet more generalizable to beable to craft any generic transaction based on whichever tuxedo runtime is defined. Currently, it is somewhat bound to the money usecase. This however does not affect our ability to push forward in our overall vision. 
 
 ## Development Roadmap :nut_and_bolt:
 
 ### Overview
 
 - **Total Estimated Duration:** 9 weeks
-- **Full-Time Equivalent (FTE):**  1.5 FTE (Joshy and Andrew will both work roughly three quarters time on this)
-- **Total Costs:** $30,000 (USD)
+## TODO Is this accurate regarding FTE?
+- **Full-Time Equivalent (FTE):**  1.5 FTE 
+- **Total Costs:** $72,000 (USD)
 
 ### Milestone 1 — Tuxedo Core and Cryptocurrency Piece
 
