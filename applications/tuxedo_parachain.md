@@ -14,53 +14,10 @@ Currently it is only possible to build a Tuxedo runtime for a standalone substra
 
 ### Project Details
 
-We would like to extend the Tuxedo to become a parachain for a few key reasons. One is for Tuxedo runtimes to beable to take advantage of the shared security model of polkadot. This is also allows us to see out a greater vision we have for a Tuxedo runtime to act as an Atomic Swap hub for all DOT ecosystem currencies. Currently Cryp is responsible for delivering a Monero BTC atomic swap protocol [Farcaster](https://github.com/farcaster-project)  
+We would like to extend the Tuxedo to become a parachain for a few key reasons. One is for Tuxedo runtimes to beable to take advantage of the shared security model of polkadot. This is also allows us to see out a greater vision we have for a Tuxedo runtime to act as an Atomic Swap hub for all DOT ecosystem currencies. Currently Cryp is responsible for delivering a Monero BTC atomic swap protocol [Farcaster](https://github.com/farcaster-project). We have aspirations to extend this facilitate all DOT ecosystem currencies.
 
-The UTXO data model is relatively well established by Bitcoin as well as research from IOHK in their [Abstract Model](https://eprint.iacr.org/2018/469.pdf)  and [Extended UTXO Model](https://files.zotero.net/eyJleHBpcmVzIjoxNjc1MjAwMTAwLCJoYXNoIjoiYTVhYmY4NjdiY2E2YzdkNTNjODkwNWNmZDZhYmM5MjAiLCJjb250ZW50VHlwZSI6ImFwcGxpY2F0aW9uXC9wZGYiLCJjaGFyc2V0IjoiIiwiZmlsZW5hbWUiOiJDaGFrcmF2YXJ0eSBldCBhbC4gLSAyMDIwIC0gVGhlIEV4dGVuZGVkIFVUWE8gTW9kZWwucGRmIn0%3D/ddc74b205ca4890fe1d87770bee15dd5a82bfed1ad8f84217cbf407686958498/Chakravarty%20et%20al.%20-%202020%20-%20The%20Extended%20UTXO%20Model.pdf). Our primary tasks would be to implement this in Rust and expose a standard API for chain developers to build on. This is analogous to the API exposed by FRAME System and the Pallets built on top.
+The delivery of this Grant would be to achieve a Tuxedo runtime testable on the Rococo testnet which will not initially support XCM(This will require more time to implement this feature in our estimations.) Instead we focus on supporting Cumulus and the absolute basics needed to achieve "parachain" status.
 
-Our core data types follow similarly, to the IOHK research cited above. The primary differences are that we do not assume a native cryptocurrency and rely on Tuxedo **Pieces** (analogous to FRAME Pallets) to provide the validation logic, rather than the UTXOs themselves.
-
-```rust
-/// A UTXO transaction specifies some inputs to be consumed, and some new outputs to be created.
-struct Transaction {
-  /// The inputs refer to currently existing unspent outputs that will be consumed by this transaction
-  inputs: BTreeSet<Input>,
-  /// Similar to inputs, Peeks refer to currently existing utxos, but they will be read only, and not consumed
-  peeks: BTreeSet<Input>,
-  /// The new outputs to be created by this transaction.
-  outputs: Vec<Output>,
-}
-
-/// A single output of a transaction which has an owner and some associated data
-struct Output {
-  /// The address that owns this output. Based on either a public key or a Tuxedo Piece
-  owner: Address,
-  /// The data associated with this output. In the simplest case, this will be a token balance, but could be arbitrarily rich state.
-  data: Vec<u8>,
-}
-
-/// A single input references the output to be consumed or peeked at and provides some witness data, possibly a signature.
-struct Input {
-  /// A previously created output that will be consumed by the transaction containing this input.
-  output: OutputId,
-  /// A witness proving that the output can be consumed by this input. In many cases including that of a basic cryptocurrency, this will be a digital signature.
-  redeemer: Vec<u8>,
-}
-```
-
-The core of the API exposed developers who create Tuxedo Pieces, will roughly follow this trait. We expect this will have to get more specific as our development shows us what we haven;t yet considered.
-
-```rust
-/// The API of a Tuxedo Piece
-trait TuxedoPiece {
-
-  /// The type of data stored in Outputs associated with this Piece
-  type Data;
-
-  /// The validation function to determine whether a given input can be consumed.
-  fn validate(transaction: Transaction, input: Input) -> bool;
-}
-```
 ### Ecosystem Fit
 
 Tuxedo is a framework for writing Substrate runtimes. Substrate is the toolkit for building virtually all parachain nodes as well as many standalone blockchains. As such, Tuxedo provides a richer set of options to runtime developers, and hopes to attract teams to the Substrate / Polkadot ecosystem who may have otherwise gone elsewhere.
@@ -114,66 +71,68 @@ Some lingering leftovers on Tuxedo is mostly centered around the wallet. We do a
 - **Full-Time Equivalent (FTE):**  1.5 FTE 
 - **Total Costs:** $72,000 (USD)
 
-### Milestone 1 — Tuxedo Core and Cryptocurrency Piece
+### Milestone 1 — Convert Pallet Parachain System to Tuxedo Piece 
 
-- **Estimated duration:** 3 weeks
+- **Estimated duration:** 4 weeks
 - **FTE:**  1.5
-- **Costs:** 10,000 USD
+- **Costs:** 32,000 USD
 
-Split the existing FRAMEless UTXO project into the generic Tuxedo core, and the first Tuxedo piece which represents a cryptocurrency.
+One of the main things that makes a Substrate runtime a parachain runtime is the `cumulus_pallet_parachain_system` 
+
+| Number | Deliverable | Specification |
+| -----: | ----------- | ------------- |
+| **0a.** | License | Apache 2.0 |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a how the parachain system piece works within Tuxedo as compared to FRAME |
+| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. |
+
+### Milestone 2 — Migration of `register_validate_block!` 
+
+- **Estimated Duration:** 2 weeks
+- **FTE:**  1.5
+- **Costs:** 20,000 USD
+
+Another requirement for a parachain runtime is the `register_validate_block!` macro
+
+We will need to migrate the following to a Tuxedo compatible version
+
+```rust
+cumulus_pallet_parachain_system::register_validate_block! {
+	Runtime = Runtime,
+	BlockExecutor = cumulus_pallet_aura_ext::BlockExecutor::<Runtime, Executive>,
+	CheckInherents = CheckInherents,
+}
+```
+
+| Number | Deliverable | Specification |
+| -----: | ----------- | ------------- |
+| **0a.** | License | Apache 2.0 |
+| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains the difference between the FRAME based approach and the Tuxedo based approach to this macro |
+| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
+
+### Milestone 3 — Full Testing via Rococo 
+
+- **Estimated Duration:** 2 weeks
+- **FTE:**  1.5
+- **Costs:** 20,000 USD
+
+Fully test the setup on both local and public Rococo relay chains
 
 | Number | Deliverable | Specification |
 | -----: | ----------- | ------------- |
 | **0a.** | License | Apache 2.0 |
 | **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can spin up the example node and transfer tokens |
-| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
-| **0d.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
-| 1. | Tuxedo Core | We will create the core of the Tuxedo System, analogous to FRAME Executive and FRAME System |
-| 2. | Token Piece | We will create the first Tuxedo piece that serves as a cryptocurrency, analogous to Pallet Balances |
-| 3. | Tuxedo Node Template | We will create a Substrate node with the runtime built with Tuxedo and including the Token piece. Together this will represent a bitcoin-like token (not PoW though, only the token logic is bitcoin-like) |
+| **0c.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
 
-### Milestone 2 — Wallet and Multisig
 
-- **Estimated Duration:** 3 weeks
-- **FTE:**  1.5
-- **Costs:** 10,000 USD
-
-Create the second Tuxedo piece, and a user-facing wallet
-
-| Number | Deliverable | Specification |
-| -----: | ----------- | ------------- |
-| **0a.** | License | Apache 2.0 |
-| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can spin up the example node and transfer tokens |
-| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
-| **0d.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
-| 1. | User Wallet | We will create a CLI wallet that users can use to track their tokens in a Tuxedo-based cryptocurrency. This makes the example node actually useable by common users who are curious to explore but not yet ready to dig into the code. The wallet will be written in Rust and communicate with Substrates jsonrpsee endpoint. |
-| 2. | Multisig Piece | We will expand the ecosystem of Tuxedo pieces by creating a multisig wallet. In addition to making the Tuxedo ecosystem a bit more complete, this also demonstrates to future piece developers how to couple pieces. |
-
-### Milestone 3 — Full Docs and Tutorial
-
-- **Estimated Duration:** 3 weeks
-- **FTE:**  1.5
-- **Costs:** 10,000 USD
-
-Fully document the Tuxedo paradigm, existing pieces, CLI wallet, and provide a tutorial for runtime developers
-
-| Number | Deliverable | Specification |
-| -----: | ----------- | ------------- |
-| **0a.** | License | Apache 2.0 |
-| **0b.** | Documentation | We will provide both **inline documentation** of the code and a basic **tutorial** that explains how a user can spin up the example node and transfer tokens |
-| **0c.** | Testing and Testing Guide | Core functions will be fully covered by comprehensive unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests. |
-| **0d.** | Docker | We will provide a Dockerfile that can be used to test all the functionality delivered with this milestone. |
-| **0e.** | Full written and Video Tutorial | With a node template, piece template, and user-facing wallet now complete, we can get serious about user and developer documentation. We will create a full written tutorial and video walkthough that covers how to build and run the Tuxedo Node Template, and send tokens around with the wallet. We will then dive into how to add the multisig piece to your runtime, and how to develop your own simple piece starting from the piece template. |
-| 1. | Piece Template | We will create the template Tuxedo Piece analogous to the FRAME pallet template. This will allow runtime developers to have a concrete starting place when building their own utxo based Substrate runtimes. |
-
+## TODO Are the milestones descriptive enough anything that anyone would add?
 
 ## Future Plans
 
-Being a framework for runtime development, we plan to continue developing the ecosystem of Tuxedo Pieces including Pieces for NFTs, Governance Mechanisms, Proof of Stake, and even smart contracts.
+We have a few key future plans which include
 
-Joshy has long had a vision of a UTXO based smart contract language based on the pi calculus. With Tuxedo core complete, it will be possible to develop such a contracting platform.
-
-The UTXO model allows concurrent processing of unrelated transactions (those that do not compete to consume any inputs). It would be exciting to extend Substrate itself to support a DAG structure rather than a linear chain to take advantage of this ability, although the feasibility of this extension has not yet been studied.
+    1. XCM integration with Tuxedo for Cross-chain UTXOS
+    2. Atomic Swaps with Tuxedo from various UTXO chains such as BTC, Monero, ZCash etc.
+    3. DOT ecosystem Atomic swaps with various UTXO chains
 
 ## Additional Information :heavy_plus_sign:
 
