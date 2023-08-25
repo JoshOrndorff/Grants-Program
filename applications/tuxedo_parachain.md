@@ -1,8 +1,8 @@
 # Tuxedo Parachain
 
-- **Team Name:** Cryp 
+- **Team Name:** Off Narrative Labs 
 - **Payment Address:** 0x5a335908df9D2C47304338E3b744579Ed7C6a64d (DAI)
-- **[Level3](https://github.com/w3f/Grants-Program/tree/master#level_slider-levels):** 3 :baby_chick:
+- **[Level3](https://github.com/w3f/Grants-Program/tree/master#level_slider-levels):** 3 :chicken:
 
 ## Project Overview :page_facing_up:
 
@@ -33,27 +33,21 @@ While it fulfills a similar role, Tuxedo is not intended to compete with FRAME, 
 ### Team members
 
 - Joshy Orndorff https://github.com/JoshOrndorff
-- Andrew Burger https://github.com/coax1d
-- Robert Hambrock https://github.com/Lederstrumpf
+- Off Narrative Labs https://github.com/Off-Narrative-Labs
 
 ### Contact
 
-## TODO who is the contact?
 - **Contact Name:** Joshy Orndorff 
-- **Contact Email:** joshyorndorff at proton dot me at proton dot me
-- **Registered Address:** The address you'll use in the invoices
+- **Contact Email:** joshyorndorff at proton dot me
+- **Registered Address:** To be provided in the invoices
 
 ### Team's experience
 
-Joshy entered the Substrate ecosystem in 2019 as part of the Substrate Developer Hub team. There he created and hosted the weekly Substrate Seminar, and contributed significantly to the Substrate Recipes. In 2020, he moved to the Moonbeam team where he was a core developer. While at Moonbeam, Joshy wrote the [Nimbus consensus engine](https://github.com/PureStake/nimbus/) which is used in several production parachains, and helped pioneer the technique whereby EVM contracts can interact with native Substrate pallets. In 2022, Joshy began contributing to the Polkadot Blockchain Academy, teaching in both Cambridge and Buenos Aires.
+Joshy entered the Substrate ecosystem in 2019 as part of the Substrate Developer Hub team. There he created and hosted the weekly Substrate Seminar, and contributed significantly to the Substrate Recipes. In 2020, he moved to the Moonbeam team where he was a core developer. While at Moonbeam, Joshy wrote the [Nimbus consensus engine](https://github.com/PureStake/nimbus/) which is used in several production parachains, and helped pioneer the technique whereby EVM contracts can interact with native Substrate pallets. In 2022, Joshy began contributing to the Polkadot Blockchain Academy, teaching in all three cohorts: Cambridge, Buenos Aires, and Berkeley.
 
-Andrew entered the Substrate ecosystem from a curiosity point of view back in June 2021. From there he learned blockchain and Substrate via documents and tinkering in his off time after work. In December 2021 received a fulltime job for a venture builder to build a parachain to eventually connect to Polkadot. Andrew graduated from the first Polkadot Blockchain Academy cohort in 2022 in Cambridge. After Cambridge Andrew moved on from the venture builder to dive into education in the Polkadot Ecosystem by instructing and developing course curriculum for the Polkadot Devcamp #2 online. For Andrew's current work he is contracting as an instructor at the Polkadot Blockchain Academy for Parity Technologies lecturing and creating educational content for Blockchain Fundamentals(Specifically lecturing on UTXO vs Accounts models), Substrate, and XCM modules. Also Andrew is doing Rust Core development work for the Integritee Parachain. Andrew shares a passion for allowing blockchain developers the ability to build upon the UTXO model in Substrate. 
+Joshy met Andrew Burger in Cambridge in 2022 at the first Polkadot Blockchain Academy where Andrew, a student at the time, chose to implement a UTXO Runtime as his final project. Together they revised the UTXO assignment and taught it together at the next PBA. A few months later they worked together on the first Tuxedo grant.
 
-
-## TODO Robert put his experience blurb here
-
-Joshy and Andrew met in Cambridge in 2022 at the first Polkadot Blockchain Academy. There Andrew chose the Frameless UTXO Project cited above as his final project.
-
+Andrew will not be contributing to this grant work (although he is still an enthusiastic open source contributor to Tuxedo) due to employment elsewhere.
 
 ## Development Status :open_book:
 
